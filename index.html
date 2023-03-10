@@ -11,62 +11,65 @@
     <div class="wrapper">
 
         <!-- heading -->
-        <div>
-            <p>Dev Explorer</p>
+        <div class="header-container">
+            <p class="top-heading">Dev Explorer</p>
             <p class="light dark"><i></i></p>
         </div>
 
         <!-- search bar -->
-        <div>
+        <div class="search-container">
         <input type="text" placeholder="Enter a GitHub username...">
+        <div class="error">
+            <p id="no-results">no search results</p>
+        </div>
         <button>Search</button>
         </div>
 
         <!-- info container -->
-        <div>
+        <div  class="profile-container">
 
             <!-- Developer img container -->
-            <div>
+            <div class="avatar">
                 <img src="" alt="">
             </div>
 
             <!-- Developer info container -->
-            <div>
+            <div class="main-info-container">
                 
                 <!-- personal info -->
-                <div>
+                <div class="personal-info-container">
 
                     <!-- name , profile link and bio -->
-                    <div>
+                    <div class="name-link-bio">
                         <!-- name -->
-                        <p user-name ></p>
+                        <p class="name" user-name ></p> 
                         <!-- profile link -->
-                        <p user-profile-link ></p>
+                        <p class="profile-link" user-profile-link ></p>
                         <!-- bio -->
-                        <p user-bio></p>
+                        <p class="bio" user-bio></p>
                     </div>
 
                     <!-- GitHub joined date -->
-                    <p github-joined></p>
+                    <p class="date" github-joined-date></p>
 
                 </div>
 
                 <!-- stats -->
-                <div stats-tab>
+                <div class="stats" stats-tab>
 
-                    <div repo>
-                        <p>Repos</p>
-                        <p repo-no></p>
+                    <div class="repo-tab" repo>
+                        <p class="repo">Repos</p>
+                        <p  class="repo-num" repo-no></p>
                     </div>
 
-                    <div followers>
-                      <p>Followers</p>
-                      <p followers></p>
+                    <div class="followers-tab" followers>
+                      <p class="followers">Followers</p>
+                      <p  class="followers-num" followers></p>
                     </div>
 
-                    <div following>
-                        <p>Following</p>
-                        <p following></p>
+                    <div class="following-tab" following>
+                        <p class="following">Following</p>
+                        <p class="following-num" following></p>
                     </div>
 
                 </div>
