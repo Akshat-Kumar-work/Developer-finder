@@ -5,115 +5,97 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="wrapper">
+    
+    <div class="container">
 
-        <!-- heading -->
-        <div class="header-container">
-            <p class="top-heading">Dev Explorer</p>
-            <p class="light dark"><i></i></p>
-        </div>
-
-        <!-- search bar -->
-        <div class="search-container">
-        <input type="text" placeholder="Enter a GitHub username...">
-        <div class="error">
-            <p id="no-results">no search results</p>
-        </div>
-        <button>Search</button>
-        </div>
-
-        <!-- info container -->
-        <div  class="profile-container">
-
-            <!-- Developer img container -->
-            <div class="avatar">
-                <img src="" alt="">
+        <header class="header">
+            <h1 class="title">DevExplorer</h1>
+            <div id="btn-mode">
+                <p id="mode-text">DARK</p>
+                <div class="icon-container"><img id="mode-icon" src="./assets/images/moon-icon.svg" alt=""></div>
             </div>
+        </header>
 
-            <!-- Developer info container -->
-            <div class="main-info-container">
-                
-                <!-- personal info -->
-                <div class="personal-info-container">
+        <main>
+            <div id="app">
 
-                    <!-- name , profile link and bio -->
-                    <div class="name-link-bio">
-                        <!-- name -->
-                        <p class="name" user-name ></p> 
-                        <!-- profile link -->
-                        <p class="profile-link" user-profile-link ></p>
-                        <!-- bio -->
-                        <p class="bio" user-bio></p>
+                <div class="searchbar-container active">
+                    <input type="search" name="user-input" id="input" placeholder="Enter a GitHub username..." required>
+                    <div class="error">
+                        <p id="no-results">no search results</p>
                     </div>
-
-                    <!-- GitHub joined date -->
-                    <p class="date" github-joined-date></p>
-
+                    <button class="btn-search" id="submit">Search</button>
                 </div>
 
-                <!-- stats -->
-                <div class="stats" stats-tab>
+                <div class="profile-container">
+                    <div class="profile-content">
+                        <div class="profile-header">
+                            <img id="avatar" src="#" alt="">
+                            <div class="profile-info-wrapper">
+                                <div class="profile-name">
+                                    <h2 id="name"></h2>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" id="user"></a>
+                                </div>
+                                <p id="date"></p>
+                            </div>
+                        </div>
+                        
+                        <p id="bio"></p>
 
-                    <div class="repo-tab" repo>
-                        <p class="repo">Repos</p>
-                        <p  class="repo-num" repo-no></p>
+                        <div class="profile-stats-wrapper">
+                            <div class="profile-stat">
+                                <p class="stat-title">Repos</p>
+                                <p id="repos" class="stat-value"></p>
+                            </div>
+                            <div class="profile-stat">
+                                <p class="stat-title">Followers</p>
+                                <p id="followers" class="stat-value"></p>
+                            </div>
+                            <div class="profile-stat">
+                                <p class="stat-title">Following</p>
+                                <p id="following" class="stat-value"></p>
+                            </div>
+                        </div>
+
+                        <div class="profile-bottom-wrapper">
+                            <div class="profile-info">
+                                <div class="bottom-icons"><img src="./assets/images/location-icon.svg" alt=""></div>
+                                <p id="location"></p>
+                            </div>
+                            <div class="profile-info">
+                                <div class="bottom-icons"><img src="./assets/images/website-icon.svg" alt=""></div>
+                                <a href="#" id="page"></a>
+                            </div>
+                            <div class="profile-info">
+                                <div class="bottom-icons"><img src="./assets/images/twitter-icon.svg" alt=""></div>
+                                <a href="#" id="twitter"></a>
+                            </div>
+                            <div class="profile-info">
+                                <div class="bottom-icons"><img src="./assets/images/company-icon.svg" alt=""></div>
+                                <p id="company"></p>
+                            </div>
+                        </div>
+
                     </div>
-
-                    <div class="followers-tab" followers>
-                      <p class="followers">Followers</p>
-                      <p  class="followers-num" followers></p>
-                    </div>
-
-                    <div class="following-tab" following>
-                        <p class="following">Following</p>
-                        <p class="following-num" following></p>
-                    </div>
-
                 </div>
-
-                <!-- links -->
-                <div class="profile-links">
-
-                    <div class="profile-info-link">
-                        <div class="bottom-icons">
-                            <img src="./assets/images/location-icon.svg" alt="">
-                        </div>
-                        <p id="location"></p>
-                    </div>
-
-                    <div class="profile-info-link">
-                        <div class="bottom-icons">
-                            <img src="./assets/images/website-icon.svg" alt="">
-                        </div>
-                        <a href="#" id="page"></a>
-                    </div>
-
-                    <div class="profile-info-link">
-                        <div class="bottom-icons">
-                            <img src="./assets/images/twitter-icon.svg" alt="">
-                        </div>
-                        <a href="#" id="twitter"></a>
-                    </div>
-
-                    <div class="profile-info-link">
-                        <div class="bottom-icons">
-                            <img src="./assets/images/company-icon.svg" alt="">
-                        </div>
-                        <p id="company"></p>
-                    </div>
-
-                </div>
-
             </div>
-
-
-        </div>
-
-
-
+        </main>
 
     </div>
     
