@@ -1,8 +1,8 @@
 //Variables
 const searchbar = document.querySelector(".searchbar-container");
 const profilecontainer = document.querySelector(".profile-container");
-const root = document.documentElement.style;
-const get = (param) => document.getElementById(`${param}`);
+const root = document.documentElement.style; //global variables ko fetch kar rhe hai
+const get = (elements) => document.getElementById(elements);
 const url = "https://api.github.com/users/";
 const noresults = get("no-results");
 const btnmode = get("btn-mode");
@@ -12,7 +12,7 @@ const btnsubmit = get("submit");
 const input = get("input");
 const avatar = get("avatar");
 const userName = get("name");
-const user = get("user");
+const user = get("user");   
 const date = get("date");
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const bio = get("bio");
@@ -26,12 +26,16 @@ const company = get("company");
 let darkMode = false;
 
 // Event Listeners
+
+//search vale button par click karne par function call karo agar input empty nahi hai 
 btnsubmit.addEventListener("click", function () {
   if (input.value !== "") {
     getUserData(url + input.value);
   }
 });
 
+
+//input par keydown event listener lagaya hai agaar key jo press kari hai enter key  hai toh function call kardo
 input.addEventListener(
   "keydown",
   function (e) {
@@ -44,10 +48,13 @@ input.addEventListener(
   false
 );
 
+//y event no search vale element ko hide karta hai
 input.addEventListener("input", function () {
   noresults.style.display = "none";
 });
 
+
+//y click hone par mode ko change karta hai
 btnmode.addEventListener("click", function () {
   if (darkMode == false) {
     darkModeProperties();
@@ -57,9 +64,9 @@ btnmode.addEventListener("click", function () {
 });
 
 // Functions
-
+    
 //API CALL
-async function getUserData(gitUrl) {
+async function getUserData(gitUrl) { //in this gitUrl parameter contain the url + input string
 
 try{
     const response = await fetch(gitUrl);
@@ -76,16 +83,21 @@ throw err;
 }
 
 
-//RENDER
+//RENDER user interface m render krwata hai data ko 
 function updateProfile(data) {
-  if (data.message !== "Not Found") {
-    noresults.style.display = "none";
-    function checkNull(param1, param2) {
-      if (param1 === "" || param1 === null) {
-        param2.style.opacity = 0.5;
-        param2.previousElementSibling.style.opacity = 0.5;
-        return false;
-      } else {
+  
+//agar data milgya hai not found nahi hai 
+  if (data.message !== "Not Found") { 
+    noresults.style.display = "none"; //hide krdo no result vale element ko 
+
+    function checkNull(param1, param2) { 
+      if (param1 === "" || param1 === null) { //agar object k andar jo data hai vo khali hai ya null hai 
+        param2.style.opacity = 0.5;  //toh data jis element m show hoga usko hide krdo
+        param2.previousElementSibling.style.opacity = 0.5;  
+        return false; 
+      }
+      //jab data available hoga toh true return krega aur jab true return hoga tab element m data dalega
+       else {
         return true;
       }
     }
@@ -108,7 +120,9 @@ function updateProfile(data) {
     company.innerText = checkNull(data.company, company) ? data.company : "Not Available";
     searchbar.classList.toggle("active");
     profilecontainer.classList.toggle("active");
-  } else {
+  }
+
+   else {
     noresults.style.display = "block";
   }
 }
@@ -117,6 +131,7 @@ function updateProfile(data) {
 
 //SWITCH TO DARK MODE - activateDarkMode()
 function darkModeProperties() {
+  //chaning global variables values 
   root.setProperty("--lm-bg", "#141D2F");
   root.setProperty("--lm-bg-content", "#1E2A47");
   root.setProperty("--lm-text", "white");
@@ -135,6 +150,7 @@ function darkModeProperties() {
 
 //SWITCH TO LIGHT MODE - activateLightMode()
 function lightModeProperties() {
+    //chaning global variables values 
   root.setProperty("--lm-bg", "#F6F8FF");
   root.setProperty("--lm-bg-content", "#FEFEFE");
   root.setProperty("--lm-text", "#4B6A9B");
@@ -151,7 +167,7 @@ function lightModeProperties() {
 }
 
 
-//INITIALISE UI
+//INITIALISE UI , starting m y function chalana hai
 function init() {
   //initialise dark-mode variable to false;
   //darkMode = true -> dark mode enable karna h 
@@ -161,8 +177,10 @@ function init() {
   //HW
 // const prefersDarkMode = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
+//check karo hmari local storage m dark-mode naam ki koi chiz hai
   const value = localStorage.getItem("dark-mode");
 
+  //agar dark mode naam ki koi chiz nahi hait toh light mode ko chlne do
   if(value === null) {
     console.log("null k andar");
     localStorage.setItem("dark-mode", darkMode);
